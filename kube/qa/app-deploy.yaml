@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ APPNAME }}
+  namespace: {{ NAMESPACE }}
+  labels:
+    app: {{ APPNAME }} 
+spec:
+  selector:
+    matchLabels:
+      app: {{ APPNAME }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ APPNAME }}
+    spec:
+      containers:
+      - name: {{ APPNAME }}
+        image: {{ image.tag }}
+        args: ["--spring.profiles.active={{ ENVIRONMENT }}"]
+        ports:
+          - containerPort: {{ SERVICEPORT }}
+        volumeMounts:
+          - name: {{ APPNAME }}-config-volume
+            mountPath: /opt/{{ APPNAME }}/
+#        livenessProbe:
+#          httpGet:
+#            path: /test
+#            port: {{ SERVICEPORT }}
+#          initialDelaySeconds: 5
+#          periodSeconds: 5
+#        readinessProbe:
+#          exec:
+#            command:
+#            - cat
+#            - /tmp/healthy
+#          initialDelaySeconds: 5
+#          periodSeconds: 5
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "400m"
+          limits:
+            memory: "2Gi"
+            cpu: "800m"
+      volumes:
+        - name: {{ APPNAME }}-config-volume
+          configMap:
+            defaultMode: 420
+            name: {{ APPNAME }}-server-conf

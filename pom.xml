@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!-- <parent> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-parent</artifactId> 
+		<version>2.2.1.RELEASE</version> <relativePath/> </parent> -->
+	<parent>
+		<groupId>org.kp.tpmg.ttg</groupId>
+		<artifactId>kp-parent-pom</artifactId>
+		<version>1.1.0</version>
+	</parent>
+
+	<groupId>org.kp.tpmg.ttg.telemedicine</groupId>
+	<artifactId>oncallservices</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>oncallservices</name>
+	<description>Clinician connect oncallservices demo</description>
+
+	<scm>
+		<connection>scm:git:git@TTGSSDV0VRHCM01.TTGTPMG.NET:tpmg/clinicianconnect/oncallservices.git
+		</connection>
+		<developerConnection>scm:git:git@TTGSSDV0VRHCM01.TTGTPMG.NET:tpmg/clinicianconnect/oncallservices.git
+		</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<springframework.boot.version>2.2.1.RELEASE</springframework.boot.version>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+              <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-logging</artifactId>
+              </exclusion>
+           </exclusions>
+		</dependency>
+		
+		<dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+		<!-- Dynamic Property Loader API -->
+	<!-- <dependency>
+		<groupId>org.kp.tpmg.ttg.common</groupId>
+		<artifactId>dynamicpropertyloader</artifactId>
+		<version>1.0.1</version>
+		<exclusions>
+			<exclusion>
+				<artifactId>sqljdbc4</artifactId>
+				<groupId>com.microsoft.sqlserver</groupId>
+			</exclusion>
+		</exclusions>
+	</dependency> -->
+	<!-- <dependency>
+		<groupId>javax.ws.rs</groupId>
+		<artifactId>javax.ws.rs-api</artifactId>
+		<version>2.0-m10</version>
+	</dependency> -->
+	<!-- <dependency> 
+		 <groupId>com.progress</groupId>
+		 <artifactId>datadirect-sqlserver</artifactId> 
+			<version>6.0.0-2021Nov18</version>
+		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<!--  <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency> --> 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-dbcp</artifactId>
+			<version>8.5.4</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+        <dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+		<dependency>
+    		<groupId>io.springfox</groupId>
+    		<artifactId>springfox-swagger-ui</artifactId>
+    		<version>2.9.2</version>
+		</dependency>
+   		<dependency>
+           <groupId>com.github.ulisesbocchio</groupId>
+           <artifactId>jasypt-spring-boot-starter</artifactId>
+           <version>2.0.0</version>
+        </dependency>
+			
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- Mockito all and power mockito dependency -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito2</artifactId>
+			<version>2.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>2.0.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4-rule-agent</artifactId>
+			<version>2.0.4</version>
+		</dependency>
+		<!-- tpmg dependencies -->
+		<dependency>
+			<groupId>org.kp.tpmg.ttg.telemedicine</groupId>
+			<artifactId>ccutilityservices</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kp.tpmg.ttg.telemedicine</groupId>
+			<artifactId>cclib</artifactId>
+			<version>2.7.1-SNAPSHOT</version>
+		</dependency>
+		<!-- jmockit dependencies -->
+		<dependency>
+			<groupId>org.jmockit</groupId>
+			<artifactId>jmockit</artifactId>
+			<version>1.48</version>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<!-- Import dependency management from Spring Boot -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${springframework.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<finalName>oncallservices</finalName>
+		<resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/conf.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>
+		<plugins>
+		 <plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${springframework.boot.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+						</execution>
+					</executions>
+			</plugin>
+		 <plugin>
+		    <groupId>org.jacoco</groupId>
+		    <artifactId>jacoco-maven-plugin</artifactId>
+		 	<version>0.8.2</version>
+			<configuration>
+				<destFile>${project.build.directory}/coverage-reports/jacoco-unit.exec</destFile>
+				<dataFile>${project.build.directory}/coverage-reports/jacoco-unit.exec</dataFile>
+				<excludes>
+					<exclude>org/kp/tpmg/ttg/clinicianconnect/web/dao/**/*</exclude>
+					<exclude>org/kp/tpmg/ttg/clinicianconnect/web/config/*</exclude>
+					<exclude>org/kp/tpmg/ttg/clinicianconnect/web/listeners/*</exclude>
+					<exclude>org/kp/tpmg/ttg/clinicianconnect/web/common/compare/*</exclude>
+					<exclude>org/kp/tpmg/ttg/clinicianconnect/web/common/util/ClinicianConnectProperties.java</exclude>
+					<exclude>org/kp/tpmg/ttg/clinicianconnect/web/common/util/OncallServiceConstants.java</exclude>
+					<exclude>org/kp/tpmg/ttg/clinicianconnect/web/common/util/QueryConstants.java</exclude>
+				</excludes>
+			</configuration>
+			<executions>
+				<execution>
+			    	<id>jacoco-initialize</id>
+					<goals>
+						<goal>prepare-agent</goal>
+					</goals>
+				</execution>
+			<!-- attached to Maven test phase -->
+			<execution>
+				<id>jacoco-site</id>
+				<phase>package</phase>
+				<goals>
+					<goal>report</goal>
+				</goals>
+			</execution>
+		</executions>
+		</plugin>
+		</plugins>
+	</build>
+
+</project>

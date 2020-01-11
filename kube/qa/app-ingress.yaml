@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ APPNAME }} 
+  namespace: {{ NAMESPACE }}
+spec:
+  tls:
+  - secretName: w-ttgtpmg-net-secret
+  rules:
+  - host: npworker.ttgtpmg.net 
+    http:
+      paths:
+      - path: /{{ APPNAME }}/*
+        backend:
+          serviceName: {{ APPNAME }} 
+          servicePort: {{ SERVICEPORT }} 
